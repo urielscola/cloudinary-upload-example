@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>upload</title>
+  </head>
+  <body>
+    <form enctype="multipart/form-data" method="post" id="form">
+      <input type="file" name="files" multiple="multiple" required /><br />
+      <input type="file" name="files" multiple="multiple" required /><br />
+
+      <input type="submit" value="Upload" />
+    </form>
+    <script>
+      var form = document.querySelector("#form");
+      form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        var formData = new FormData(form);
+
+        fetch("http://localhost:3001/upload", {
+          method: "POST",
+          body: formData
+        });
+      });
+    </script>
+  </body>
+</html>
